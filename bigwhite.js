@@ -10,9 +10,7 @@ Module.register("bigwhite", {
 	// automatically called by MagicMirror at the start
 	start: function() {
 		Log.log("Connecting big white socket");
-		var self = this;
 		this.sendSocketNotification("CONFIG", this.config);
-		// setTimeout(function() { self.sendSocketNotification("CONFIG", self.config);}, 2000);
 	},
 
 	getTemplate: function() {

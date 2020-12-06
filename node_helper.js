@@ -7,8 +7,6 @@ module.exports = NodeHelper.create({
     config: false,
 
     socketNotificationReceived: function(notification, payload) {
-        console.log("Node helper big white received");
-
         if (notification === "CONFIG" && !this.started) {
             this.started = true;
             this.config = payload;
