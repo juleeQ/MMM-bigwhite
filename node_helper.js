@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 
 module.exports = NodeHelper.create({
-    config: false,
+    started: false,
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "CONFIG" && !this.started) {
