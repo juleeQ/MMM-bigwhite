@@ -7,19 +7,20 @@ module.exports = NodeHelper.create({
     started: false,
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === "CONFIG" && !this.started) {
-            this.started = true;
-            this.config = payload;
-
-            console.log("Node helper big white started");
-
+        if (notification === "CONFIG") {
             this.updateData();
 
-            // periodically calls update() from now on
-            var self = this; 
-            setInterval(function() {
-                self.updateData();
-            }, this.config.updateInterval);
+            if (!this.started) {
+                this.config = payload;
+                this.started = true;
+                console.log("Node helper big white started");
+
+                // periodically calls update() from now on
+                var self = this; 
+                setInterval(function() {
+                    self.updateData();
+                }, this.config.updateInterval);
+            }
         }
     },
 
